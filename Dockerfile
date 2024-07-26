@@ -7,7 +7,7 @@ RUN wget -O shadowsocks.tar.xz "https://github.com/shadowsocks/shadowsocks-rust/
     && tar -xvf shadowsocks.tar.xz \
     && chmod +x ssserver \
     && mv ssserver /usr/local/bin/ssserver \
-    && rm -rf shadowsocks.tar.xz ssmanager sslocal ssurl
+    && rm -rf shadowsocks.tar.xz ssmanager sslocal ssurl ssservice
 
 RUN mkdir -p /dev/net && \
     mknod /dev/net/tun c 10 200 && \
