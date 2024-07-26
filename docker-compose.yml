@@ -1,0 +1,16 @@
+version: "3"
+services:
+  openvpn-client:
+    container_name: proton-openvpn-ss
+    image: wooshow/proton-openvpn-ss:latest
+    privileged: true
+    devices:
+      - "/dev/net/tun:/dev/net/tun"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:5162:5162"
+    volumes:
+      - ./conf:/data/conf
+      - ./log:/data/log

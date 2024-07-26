@@ -9,7 +9,11 @@ RUN wget -O shadowsocks.tar.xz "https://github.com/shadowsocks/shadowsocks-rust/
     && mv ssserver /usr/local/bin/ssserver \
     && rm -rf shadowsocks.tar.xz ssmanager sslocal ssurl
 
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+RUN mkdir -p /dev/net && \
+    mknod /dev/net/tun c 10 200 && \
+    chmod 600 /dev/net/tun
 
-ENTRYPOINT ["/entrypoint.sh"]
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+ENTRYPOINT ["entrypoint.sh"]

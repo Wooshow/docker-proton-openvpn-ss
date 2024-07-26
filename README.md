@@ -11,6 +11,6 @@ docker build -t wooshow/proton-openvpn-ss:latest .
 ## Run
 
 ```shell
-
+docker compose up -d
 ```
 
